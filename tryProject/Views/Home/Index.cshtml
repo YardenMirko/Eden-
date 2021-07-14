@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Home.css" />
+    <script src='https://cdn.plot.ly/plotly-2.2.0.min.js'></script>
+    <script defer src="~/js/Grpahs.js"></script>
+</head>
+<!--Intro-->
+<section id="intro">
+    <div class="intro  container">
+        <video autoplay muted loop id="myVideo">
+            <source src="~/images/children.mp4" type="video/mp4" />
+        </video>
+        
+    </div>
+
+</section>
+<!--END Intro-->
+<!--Donation Options-->
+<section id="donations">
+    <div class="donations container">
+        
+        <div class="donations-bottom">
+            <div class="donations-item">
+                <div class="icon"><a asp-area="" asp-controller="CommunityWorks" asp-action="Index"><img src="~/images/giveAway.png" /></a></div>
+                <h2>Donate Items</h2>
+                <p>The link should take you to a page with foundations that want to get basic items to be donated</p>
+            </div>
+            <div class="donations-item">
+                <div class="icon"><a asp-area="" asp-controller="CommunityWorks" asp-action="Index"><img src="~/images/serve.png" /></a></div>
+                <h2>Comunity Work</h2>
+                <p>The link should take you to a page filled with comunty work</p>
+            </div>
+            <div class="donations-item">
+                <div class="icon"><a asp-area="" asp-controller="MoneyDonations" asp-action="Index"><img src="~/images/donate.png" /></a></div>
+                <h2>Donate</h2>
+                <p>The link should take you to a page with a variety of charities</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--END Donation Options-->
+<!--Statistics-->
+<section id="Charts">
+    <h5>Hunger statistics arround the world</h5>
+    <p> Developing Countries(Orange), Israel(Magenta), South Asia(Green), Latin America Caribean (purple), Sub Saharan Africa(blue) </p>
+    <div id="hunger"></div>
+    <h5>Google daily search statistics for pet adoption(blue) and community service (orange) in Israel</h5>
+    <div id="heat"></div>
+</section>
+<!--End Statistics-->
+<!--Forums Section-->
+<section id="forums">
+    <div class="forums container">
+        <div class="forums-header">
+            <h1 class="section-title">You can join us</h1>
+        </div>
+        <div class="all-forums">
+            <div class="forum-item">
+                <div class="forum-info">
+                    <a class="nav-link" asp-area="" asp-controller="Forums" asp-action="Index"><h1>Forums</h1></a>
+                    <p>Be an active part in our desccusions in making the world a better place</p>
+                </div>
+                <div class="forum-img">
+                    <img src="~/images/img2.jpeg" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--END Forums Section-->
+<!--About Section-->
+<section id="about">
+    <div class="about container">
+        <div class="col-left">
+            <div class="about-img">
+                <img src="~/images/img3.jpeg" alt="img">
+            </div>
+        </div>
+        <div class="col-right">
+            <h1 class="section-title">About <span>Us</span></h1>
+            <h2>We come in peace</h2>
+            <p>We are a non profit organization. Our goal? To help you find a new cause to support by giving you access to a large variety of foundations, searching for people just like you!</p>
+        </div>
+    </div>
+</section>
+<!--END About Section-->
+<!--Contact Section-->
+<section id="contact">
+    <div class="contact container">
+        <div>
+            <h1 class="section-title">Contact <span>info</span></h1>
+            <p>If you are an organization owner feel free to contact us! :)</p>
+        </div>
+        <div class="contact-items">
+            <div class="contact-item">
+                <div class="icon"><img src="~/images/phone.png" /></div>
+                <div class="contact-info">
+                    <h1>Phone</h1>
+                    <h2>+1 234 567 8912</h2>  
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="icon"><img src="~/images/new-post.png" /></div>
+                <div class="contact-info">
+                    <h1>Email</h1>
+                    <h2>edencolmancompany@gmail.com</h2>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="icon"><img src="~/images/map-marker.png" /></div>
+                <div class="contact-info">
+                    <h1>Address</h1>
+                    <h2>College of Management, Rishon leziom, Israel</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--END Contact Section-->

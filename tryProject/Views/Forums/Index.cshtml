@@ -1,0 +1,51 @@
+﻿@model IEnumerable<tryProject.Models.Forum>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/forumIndex.css" />
+</head>
+
+<div class="forum-stage">
+
+    <div class="table">
+
+        <div class="mini-nav">
+            @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0) { 
+                <a asp-action="Create">Create New</a>
+            }
+        </div>
+        <div class="cards-container">
+
+            @foreach (var item in Model) { 
+            
+            <div class="card">
+                <img id="picture" src="~/images/iceberg.png"/>
+                <div class="written-container">
+                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                    <p> @Html.DisplayFor(modelItem => item.Body)</p>
+                    <div class="accesories">
+                        <p>@Html.DisplayFor(modelItem => item.DatePublished)</p>
+                        @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0 && Context.User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id"> Details </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        }
+                    </div>
+                </div>
+                <h4>@Html.DisplayFor(modelItem => item.ForumCategory.Name)</h4> 
+            </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>

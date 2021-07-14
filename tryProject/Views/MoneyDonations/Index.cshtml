@@ -1,0 +1,67 @@
+﻿@model IEnumerable<tryProject.Models.MoneyDonation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script defer src="~/js/donations.js"></script>
+    <link rel="stylesheet" href="~/css/new1.css" />
+</head>
+
+<div class="Canvas">
+    <h1>Which cause do <span>YOU</span> wish to support?</h1>
+    <div class="stage">
+        <div class="Col-Left">
+            <div class="filterSection">
+                <h1>Who is your recipient?</h1>
+                @foreach (var item in ViewBag.CatersTo)
+                {
+
+                    <div class="box"><input class="checky" type="checkbox" name="CatersTo" id="@item.Text" value="@item.Text" /><label for="@item.Text">@item.Text</label></div>
+
+                }
+            </div>
+            <div class="filterSection">
+                <h1>Who is your recipient?</h1>
+                @foreach (var item in ViewBag.Purposes)
+                {
+
+                    <div class="box"><input class="checky" type="checkbox" name="Purposes" id="@item.Text" value="@item.Text" /><label for="@item.Text">@item.Value</label></div>
+
+                }
+            </div>
+        </div>
+        <div class="Col-Right">
+            <section class="Canvas2">
+              @foreach(var item in Model){ 
+                <div class="filteredItem @item.CatersTo.Name @item.Purpose.spName" >
+                    <div class="Left-half">
+                        <img id="picture" src="@item.Association.Logo" />
+                        <h2>@Html.DisplayFor(modelItem => item.Association.Name)</h2>
+                        <h3>@item.Association.City</h3>
+                        <h3>@item.CatersTo.Name</h3>
+                    </div>
+                    <div class="Right-half">
+                        <h1>@item.Name</h1>
+                        <p>@Html.DisplayFor(modelItem => item.Decscription)</p>
+                        @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0 && Context.User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-controller="Associations" asp-action="Details" asp-route-id="@item.AssociationId"> Details </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Associations" asp-action="Details" asp-route-id="@item.AssociationId"> Details </a>
+                        }
+                    </div>
+                </div>
+              }
+            </section>
+        </div>
+    </div>
+       <h9>Let's talk about that</h9>
+  </div>
+

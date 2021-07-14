@@ -1,0 +1,17 @@
+﻿@model IEnumerable<GroupManagerAssociations>
+
+@{
+    ViewData["Title"] = "GroupBy";
+}
+<h2>
+    Associations:
+</h2>
+
+@foreach (var group in Model)
+{
+<div>
+    @group.Aname located in @group.Cname
+    
+</div>
+
+}*

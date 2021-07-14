@@ -1,0 +1,154 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+body {
+    font-family: 'Acme';
+    font-size: 1.5rem;
+}
+
+a.navbar-brand {
+    font-size: 2.5rem;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+a {
+    color: white;
+}
+
+    a span {
+        color: cadetblue;
+    }
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.home {
+    text-align: center;
+}
+
+.container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* header 
+-------------------------------------------------- */
+
+.navbar {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+.nav-link {
+    color: white;
+}
+
+header .container {
+    margin: 0;
+    max-width: 100%;
+}
+
+header a:hover {
+    color: cadetblue;
+}
+
+.navlog {
+    align-self: center;
+    display: flex;
+    list-style-type: none;
+}
+
+    .navlog a {
+        margin: 3px;
+        border: 3px solid cadetblue;
+        background-color: transparent;
+        color: cadetblue;
+    }
+
+        .navlog a:hover {
+            border: 3px solid cadetblue;
+            background-color: cadetblue;
+            color: white;
+        }
+
+
+/*  End header 
+-------------------------------------------------- */
+
+
+/*  footer 
+-------------------------------------------------- */
+
+footer {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+    footer .container {
+        min-height: 200px;
+        flex-direction: column;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    footer .brand {
+        color: white;
+    }
+
+        footer .brand span {
+            color: cadetblue;
+        }
+
+    footer h9 {
+        color: white;
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: .1rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    footer .social-icon {
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    footer .social-item {
+        height: 50px;
+        width: 50px;
+        margin: 0 5px;
+    }
+
+        footer .social-item img {
+            filter: grayscale(1);
+            transition: .3s ease filter;
+        }
+
+        footer .social-item:hover img {
+            filter: grayscale(0);
+        }
+
+    footer p {
+        color: white;
+        font-size: 1.3rem;
+    }
+
+/*  End footer 
+-------------------------------------------------- */
+
+
+@media only screen and (max-width: 768px) {
+
+    .navbar-nav {
+      font-size:1rem;
+    }
+  
+}

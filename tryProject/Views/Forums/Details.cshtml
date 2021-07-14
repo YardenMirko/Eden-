@@ -1,0 +1,34 @@
+﻿@model tryProject.Models.Forum
+
+@{
+    ViewData["Title"] = "Details";
+}
+<head>
+    <link rel="stylesheet" href="~/css/forumdetails.css" />
+</head>
+
+<div class="forum-stage">
+    <div class="secondary-nav">
+        <h6>@Html.DisplayFor(model => model.Title)</h6>
+    </div>
+    <div class="forum-container">
+        <div class="main-post">
+            <h6>@Html.DisplayFor(model => model.Title)</h6>
+            <p>@Html.DisplayFor(model => model.Body)</p>
+            <p class="time-date">@Html.DisplayFor(model => model.DatePublished)</p>
+            <div class="coment"><a asp-controller="Comments" asp-action="Create">Comment</a></div>
+        </div>
+        <div class="replies">
+            @foreach (var item in Model.Comments)
+            {
+
+                <div class="comment">
+                    <h9>@Html.DisplayFor(modelItem => item.Description)</h9>
+                    <p>@Html.DisplayFor(modelItem => item.CommentDate)</p>
+                </div>
+
+            }
+        </div>
+    </div>
+    <p class="mythical">Lets talk about that</p>
+</div>

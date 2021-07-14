@@ -1,0 +1,46 @@
+﻿@model tryProject.Models.Association
+
+@{
+    ViewData["Title"] = "Details";
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/association.css" />
+</head>
+<div class="org-container">
+
+    <div class="association-container">
+        <div class="img-side">
+            <img id ="picture" src="@Html.DisplayFor(model=>model.Logo)" />
+                <h9>You can contuct us at:</h9>
+                <a href="@Html.DisplayFor(model=>model.Website)">@Html.DisplayFor(model => model.Website)</a>
+                <a>@Html.DisplayFor(model => model.Email)</a>
+        </div>
+        <div class="association-info">
+            <h1>@Html.DisplayFor(model=>model.Name)</h1>
+            <p>@Html.DisplayFor(model=>model.Introduction)</p>
+        </div>
+        
+    </div>
+    <hr/>
+    <div class="cards-container">
+        @foreach (var item in Model.CommunityWorks)
+        {
+            <div class="card">
+                <div class="Left-half">
+                    <img id="picture" src="@item.Association.Logo" />
+                    <h2>@Html.DisplayFor(modelItem => item.Association.Name)</h2>
+                    <h3>@item.Association.City</h3>
+                </div>
+                <div class="Right-half">
+                    <h1>@item.Name</h1>
+                    <p>@Html.DisplayFor(modelItem => item.Decscription)</p>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-controller="Associations" asp-action="Details" asp-route-id="@item.AssociationId"> Details </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

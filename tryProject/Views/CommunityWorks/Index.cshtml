@@ -1,0 +1,104 @@
+﻿@model IEnumerable<tryProject.Models.CommunityWorks>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script defer src="~/js/Communal.js"></script>
+    <link rel="stylesheet" href="~/css/new1.css" />
+</head>
+
+<div class="Canvas">
+    <h1>What do <span>YOU</span> wish to do?</h1>
+    <div class="stage">
+
+        <div class="Col-Left">
+
+            <div id="filters" class="selections">
+                <div class="filterSection">
+                    <h1>Do you wish to donate or volunteer?</h1>
+                    @foreach (var item in ViewBag.WorkOrGive)
+                    {
+
+                        <div class="box"><input class="checky" type="checkbox" name="WorkOrGive" id="@item.Text" value="@item.Text" /><label for="@item.Text">@item.Text</label></div>
+
+                    }
+                </div>
+                <div class="filterSection">
+                    <h1>Which area are you close to?</h1>
+                    @foreach (var item in ViewBag.Zones)
+                    {
+
+                        <div class="box"><input class="checky" type="checkbox" name="Zones" id="@item.Text" value="@item.Text" /><label for="@item.Text">@item.Value</label></div>
+
+                    }
+                </div>
+                <div class="filterSection">
+                    <h1>Who is your recipient?</h1>
+                    @foreach (var item in ViewBag.CatersTo)
+                    {
+
+                        <div class="box"><input class="checky" type="checkbox" name="CatersTo" id="@item.Text" value="@item.Text" /><label for="@item.Text">@item.Text</label></div>
+
+                    }
+                </div>
+                  <div class="filterSection"><!-- weather widget start --><a target="_blank" href="https://www.booked.net/weather/tel-aviv-18414"><img src="https://w.bookcdn.com/weather/picture/1_18414_1_1_137AE9_160_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=90186" alt="booked.net" /></a><!-- weather widget end --></div>
+            </div>
+        </div>
+        <div class="Col-Right">
+            <section class="Canvas2">
+
+                @foreach (var item in Model)
+                {
+                <div class="filteredItem @item.WorkOrGive.Name @item.Zone.spName @item.CatersTo.Name">
+                    <div class="Left-half">
+                        <div class="mapouter">
+                            <div class="gmap_canvas">
+                                <iframe width="150" height="150" id="gmap_canvas" src="https://maps.google.com/maps?q=@item.Location%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://putlocker-is.org"></a><br>
+                                <style>
+                                    .mapouter {
+                                        position: relative;
+                                        text-align: right;
+                                        height: 150px;
+                                        width: 150px;
+                                    }
+                                </style><a href="https://www.embedgooglemap.net">google maps code generator</a>
+                                <style>
+                                    .gmap_canvas {
+                                        overflow: hidden;
+                                        background: none !important;
+                                        height: 150px;
+                                        width: 150px;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <img id="picture" src="@item.Association.Logo" />
+                        <h2>@Html.DisplayFor(modelItem => item.Association.Name)</h2>
+                        <h3>@item.Location</h3>
+                        <h3>@item.CatersTo.Name</h3>
+                    </div>
+                    <div class="Right-half">
+                        <h1>@item.Name</h1>
+                        <p>@Html.DisplayFor(modelItem => item.Decscription)</p>
+                        @if (Context.User != null && Context.User.Claims != null && Context.User.Claims.Count() > 0 && Context.User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-controller="Associations" asp-action="Details" asp-route-id="@item.AssociationId"> Details </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Associations" asp-action="Details" asp-route-id="@item.AssociationId"> Details </a>
+                        }
+
+                    </div>
+                </div>
+                }
+            </section>
+        </div>
+    </div>
+    <h9>Let's talk about that</h9>
+</div>
